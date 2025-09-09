@@ -34,6 +34,8 @@ for data in current:
     print(f"Period: {data.from_} to {data.to}")
     print(f"Intensity: {data.intensity.forecast} gCO2/kWh")
     print(f"Index: {data.intensity.index}")
+# close the httpx connection
+client.close()
 ```
 
 ### Using Context Manager (Recommended)
