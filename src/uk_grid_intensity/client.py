@@ -66,7 +66,7 @@ class CarbonIntensityClient:
     ):
         self.base_url = base_url.rstrip("/")
         self.timeout = timeout
-        self.user_agent = user_agent or "uk-grid-intensity-client/0.1.0"
+        self.user_agent = user_agent or "uk-grid-intensity-client-python"
 
         # Configure httpx client
         self._client = httpx.Client(
