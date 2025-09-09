@@ -21,6 +21,7 @@ REGION_NAMES: Dict[int, str] = {
     15: "England",
     16: "Scotland",
     17: "Wales",
+    18: "GB",
 }
 
 # Reverse mapping: name to region ID

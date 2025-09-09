@@ -104,7 +104,7 @@ class RegionalIntensityData(BaseModel):
 class RegionalDataPoint(BaseModel):
     """Individual region data point."""
 
-    regionid: int = Field(..., description="Region ID (1-17)", ge=1, le=17)
+    regionid: int = Field(..., description="Region ID (1-18)", ge=1, le=18)
     dnoregion: str = Field(..., description="Distribution Network Operator region name")
     shortname: str = Field(..., description="Short region name")
     intensity: IntensityValue = Field(..., description="Carbon intensity data")
@@ -124,7 +124,7 @@ class RegionalFromTo(BaseModel):
 class RegionalId(BaseModel):
     """Regional data for a specific region with historical data."""
 
-    regionid: int = Field(..., description="Region ID (1-17)", ge=1, le=17)
+    regionid: int = Field(..., description="Region ID (1-18)", ge=1, le=18)
     dnoregion: str = Field(..., description="Distribution Network Operator region name")
     shortname: str = Field(..., description="Short region name")
     postcode: Optional[str] = Field(None, description="Outward postcode")

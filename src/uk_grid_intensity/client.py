@@ -28,7 +28,7 @@ from .schemas import (
 )
 
 # Constants
-_REGION_ID_ERROR = "Region ID must be between 1 and 17"
+_REGION_ID_ERROR = "Region ID must be between 1 and 18"
 
 
 class CarbonIntensityAPIError(Exception):
@@ -481,8 +481,8 @@ class CarbonIntensityClient:
         return RegionalIdResponse.model_validate(data).data
 
     def get_intensity_by_region_id(self, region_id: int) -> List[RegionalId]:
-        """Get carbon intensity data for specific region ID (1-17)."""
-        if not 1 <= region_id <= 17:
+        """Get carbon intensity data for specific region ID (1-18)."""
+        if not 1 <= region_id <= 18:
             raise ValueError(_REGION_ID_ERROR)
 
         response = self._client.get(f"/regional/regionid/{region_id}")
@@ -491,7 +491,7 @@ class CarbonIntensityClient:
 
     async def aget_intensity_by_region_id(self, region_id: int) -> List[RegionalId]:
         """Get carbon intensity data for specific region ID (async)."""
-        if not 1 <= region_id <= 17:
+        if not 1 <= region_id <= 18:
             raise ValueError(_REGION_ID_ERROR)
 
         response = await self.async_client.get(f"/regional/regionid/{region_id}")
@@ -543,7 +543,7 @@ class CarbonIntensityClient:
         self, from_dt: Union[datetime, str], region_id: int
     ) -> List[RegionalId]:
         """Get regional carbon intensity data 24 hours forward for region."""
-        if not 1 <= region_id <= 17:
+        if not 1 <= region_id <= 18:
             raise ValueError(_REGION_ID_ERROR)
 
         from_str = self._format_datetime(from_dt)
@@ -557,7 +557,7 @@ class CarbonIntensityClient:
         self, from_dt: Union[datetime, str], region_id: int
     ) -> List[RegionalId]:
         """Get regional carbon intensity data 24 hours forward for region (async)."""
-        if not 1 <= region_id <= 17:
+        if not 1 <= region_id <= 18:
             raise ValueError(_REGION_ID_ERROR)
 
         from_str = self._format_datetime(from_dt)
@@ -611,7 +611,7 @@ class CarbonIntensityClient:
         self, from_dt: Union[datetime, str], region_id: int
     ) -> List[RegionalId]:
         """Get regional carbon intensity data 48 hours forward for region."""
-        if not 1 <= region_id <= 17:
+        if not 1 <= region_id <= 18:
             raise ValueError(_REGION_ID_ERROR)
 
         from_str = self._format_datetime(from_dt)
@@ -625,7 +625,7 @@ class CarbonIntensityClient:
         self, from_dt: Union[datetime, str], region_id: int
     ) -> List[RegionalId]:
         """Get regional carbon intensity data 48 hours forward for region (async)."""
-        if not 1 <= region_id <= 17:
+        if not 1 <= region_id <= 18:
             raise ValueError(_REGION_ID_ERROR)
 
         from_str = self._format_datetime(from_dt)
@@ -679,7 +679,7 @@ class CarbonIntensityClient:
         self, from_dt: Union[datetime, str], region_id: int
     ) -> List[RegionalId]:
         """Get regional carbon intensity data 24 hours in the past for region."""
-        if not 1 <= region_id <= 17:
+        if not 1 <= region_id <= 18:
             raise ValueError(_REGION_ID_ERROR)
 
         from_str = self._format_datetime(from_dt)
@@ -693,7 +693,7 @@ class CarbonIntensityClient:
         self, from_dt: Union[datetime, str], region_id: int
     ) -> List[RegionalId]:
         """Get regional carbon intensity data 24 hours in the past for region (async)."""
-        if not 1 <= region_id <= 17:
+        if not 1 <= region_id <= 18:
             raise ValueError(_REGION_ID_ERROR)
 
         from_str = self._format_datetime(from_dt)
@@ -753,7 +753,7 @@ class CarbonIntensityClient:
         self, from_dt: Union[datetime, str], to_dt: Union[datetime, str], region_id: int
     ) -> List[RegionalId]:
         """Get regional carbon intensity data between datetimes for region."""
-        if not 1 <= region_id <= 17:
+        if not 1 <= region_id <= 18:
             raise ValueError(_REGION_ID_ERROR)
 
         from_str = self._format_datetime(from_dt)
@@ -768,7 +768,7 @@ class CarbonIntensityClient:
         self, from_dt: Union[datetime, str], to_dt: Union[datetime, str], region_id: int
     ) -> List[RegionalId]:
         """Get regional carbon intensity data between datetimes for region (async)."""
-        if not 1 <= region_id <= 17:
+        if not 1 <= region_id <= 18:
             raise ValueError(_REGION_ID_ERROR)
 
         from_str = self._format_datetime(from_dt)
