@@ -12,8 +12,7 @@ async def basic_examples():
     print("=== Basic Examples ===")
 
     # Create client (can be used as context manager)
-    async with CarbonIntensityClient() as client:
-
+    with CarbonIntensityClient() as client:
         # Get current intensity
         print("\n1. Current Carbon Intensity:")
         current = await client.aget_current_intensity()
@@ -92,7 +91,7 @@ async def advanced_examples():
 
         # Get data for a specific postcode
         print("\n4. Data for Postcode SW1A 1AA:")
-        postcode_data = await client.aget_intensity_by_postcode("SW1A1AA")
+        postcode_data = await client.aget_intensity_by_postcode("GU51")
         for region in postcode_data:
             print(f"  Region: {region.shortname} (ID: {region.regionid})")
             print(f"  DNO: {region.dnoregion}")
