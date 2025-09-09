@@ -245,7 +245,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-- [UK National Grid](https://carbonintensity.org.uk/) for providing the Carbon Intensity API
+- [National Energy System Operator (NESO)](https://carbonintensity.org.uk/) for providing the Carbon Intensity API
 
 - [Pydantic](https://pydantic.dev/)
 - [HTTPX](https://www.python-httpx.org/)
