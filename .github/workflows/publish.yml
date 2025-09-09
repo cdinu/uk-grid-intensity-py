@@ -21,4 +21,4 @@ jobs:
       - name: Build package
         run: uv build
       - name: Publish package
-        uses: uv publish
+        run: uv publish
