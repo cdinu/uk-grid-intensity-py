@@ -165,7 +165,11 @@ class CarbonIntensityClient:
         return IntensityResponse.model_validate(data).data
 
     def get_intensity_by_date(self, date_: Union[date, str]) -> List[IntensityData]:
-        """Get carbon intensity data for specific date."""
+        """Get carbon intensity data for specific date.
+
+        Args:
+            date_: Date in YYYY-MM-DD format e.g. 2025-09-25
+        """
         date_str = self._format_date(date_)
         response = self._client.get(f"/intensity/date/{date_str}")
         data = self._handle_response(response)
@@ -174,7 +178,11 @@ class CarbonIntensityClient:
     async def aget_intensity_by_date(
         self, date_: Union[date, str]
     ) -> List[IntensityData]:
-        """Get carbon intensity data for specific date (async)."""
+        """Get carbon intensity data for specific date (async).
+
+        Args:
+            date_: Date in YYYY-MM-DD format e.g. 2025-09-25
+        """
         date_str = self._format_date(date_)
         response = await self.async_client.get(f"/intensity/date/{date_str}")
         data = self._handle_response(response)
@@ -183,7 +191,12 @@ class CarbonIntensityClient:
     def get_intensity_by_date_and_period(
         self, date_: Union[date, str], period: int
     ) -> List[IntensityData]:
-        """Get carbon intensity data for specific date and settlement period (1-48)."""
+        """Get carbon intensity data for specific date and settlement period (1-48).
+
+        Args:
+            date_: Date in YYYY-MM-DD format e.g. 2025-09-25
+            period: Settlement period (1-48)
+        """
         if not 1 <= period <= 48:
             raise ValueError("Period must be between 1 and 48")
 
@@ -195,7 +208,12 @@ class CarbonIntensityClient:
     async def aget_intensity_by_date_and_period(
         self, date_: Union[date, str], period: int
     ) -> List[IntensityData]:
-        """Get carbon intensity data for specific date and settlement period (async)."""
+        """Get carbon intensity data for specific date and settlement period (async).
+
+        Args:
+            date_: Date in YYYY-MM-DD format e.g. 2025-09-25
+            period: Settlement period (1-48)
+        """
         if not 1 <= period <= 48:
             raise ValueError("Period must be between 1 and 48")
 
@@ -219,7 +237,11 @@ class CarbonIntensityClient:
     def get_intensity_by_datetime(
         self, from_dt: Union[datetime, str]
     ) -> List[IntensityData]:
-        """Get carbon intensity data for specific datetime."""
+        """Get carbon intensity data for specific datetime.
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+        """
         from_str = self._format_datetime(from_dt)
         response = self._client.get(f"/intensity/{from_str}")
         data = self._handle_response(response)
@@ -228,7 +250,11 @@ class CarbonIntensityClient:
     async def aget_intensity_by_datetime(
         self, from_dt: Union[datetime, str]
     ) -> List[IntensityData]:
-        """Get carbon intensity data for specific datetime (async)."""
+        """Get carbon intensity data for specific datetime (async).
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+        """
         from_str = self._format_datetime(from_dt)
         response = await self.async_client.get(f"/intensity/{from_str}")
         data = self._handle_response(response)
@@ -237,7 +263,11 @@ class CarbonIntensityClient:
     def get_intensity_forward_24h(
         self, from_dt: Union[datetime, str]
     ) -> List[IntensityData]:
-        """Get carbon intensity data 24 hours forward from datetime."""
+        """Get carbon intensity data 24 hours forward from datetime.
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+        """
         from_str = self._format_datetime(from_dt)
         response = self._client.get(f"/intensity/{from_str}/fw24h")
         data = self._handle_response(response)
@@ -246,7 +276,11 @@ class CarbonIntensityClient:
     async def aget_intensity_forward_24h(
         self, from_dt: Union[datetime, str]
     ) -> List[IntensityData]:
-        """Get carbon intensity data 24 hours forward from datetime (async)."""
+        """Get carbon intensity data 24 hours forward from datetime (async).
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+        """
         from_str = self._format_datetime(from_dt)
         response = await self.async_client.get(f"/intensity/{from_str}/fw24h")
         data = self._handle_response(response)
@@ -255,7 +289,11 @@ class CarbonIntensityClient:
     def get_intensity_forward_48h(
         self, from_dt: Union[datetime, str]
     ) -> List[IntensityData]:
-        """Get carbon intensity data 48 hours forward from datetime."""
+        """Get carbon intensity data 48 hours forward from datetime.
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+        """
         from_str = self._format_datetime(from_dt)
         response = self._client.get(f"/intensity/{from_str}/fw48h")
         data = self._handle_response(response)
@@ -264,7 +302,11 @@ class CarbonIntensityClient:
     async def aget_intensity_forward_48h(
         self, from_dt: Union[datetime, str]
     ) -> List[IntensityData]:
-        """Get carbon intensity data 48 hours forward from datetime (async)."""
+        """Get carbon intensity data 48 hours forward from datetime (async).
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+        """
         from_str = self._format_datetime(from_dt)
         response = await self.async_client.get(f"/intensity/{from_str}/fw48h")
         data = self._handle_response(response)
@@ -273,7 +315,11 @@ class CarbonIntensityClient:
     def get_intensity_past_24h(
         self, from_dt: Union[datetime, str]
     ) -> List[IntensityData]:
-        """Get carbon intensity data 24 hours in the past from datetime."""
+        """Get carbon intensity data 24 hours in the past from datetime.
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+        """
         from_str = self._format_datetime(from_dt)
         response = self._client.get(f"/intensity/{from_str}/pt24h")
         data = self._handle_response(response)
@@ -282,7 +328,11 @@ class CarbonIntensityClient:
     async def aget_intensity_past_24h(
         self, from_dt: Union[datetime, str]
     ) -> List[IntensityData]:
-        """Get carbon intensity data 24 hours in the past from datetime (async)."""
+        """Get carbon intensity data 24 hours in the past from datetime (async).
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+        """
         from_str = self._format_datetime(from_dt)
         response = await self.async_client.get(f"/intensity/{from_str}/pt24h")
         data = self._handle_response(response)
@@ -291,7 +341,12 @@ class CarbonIntensityClient:
     def get_intensity_between_datetimes(
         self, from_dt: Union[datetime, str], to_dt: Union[datetime, str]
     ) -> List[IntensityData]:
-        """Get carbon intensity data between two datetimes (max 14 days)."""
+        """Get carbon intensity data between two datetimes (max 14 days).
+
+        Args:
+            from_dt: Start datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+            to_dt: End datetime in ISO 8601 format e.g. 2025-09-26T14:30Z
+        """
         from_str = self._format_datetime(from_dt)
         to_str = self._format_datetime(to_dt)
         response = self._client.get(f"/intensity/{from_str}/{to_str}")
@@ -301,7 +356,12 @@ class CarbonIntensityClient:
     async def aget_intensity_between_datetimes(
         self, from_dt: Union[datetime, str], to_dt: Union[datetime, str]
     ) -> List[IntensityData]:
-        """Get carbon intensity data between two datetimes (async)."""
+        """Get carbon intensity data between two datetimes (async).
+
+        Args:
+            from_dt: Start datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+            to_dt: End datetime in ISO 8601 format e.g. 2025-09-26T14:30Z
+        """
         from_str = self._format_datetime(from_dt)
         to_str = self._format_datetime(to_dt)
         response = await self.async_client.get(f"/intensity/{from_str}/{to_str}")
@@ -312,7 +372,12 @@ class CarbonIntensityClient:
     def get_intensity_statistics(
         self, from_dt: Union[datetime, str], to_dt: Union[datetime, str]
     ) -> List[StatisticsData]:
-        """Get carbon intensity statistics between datetimes (max 30 days)."""
+        """Get carbon intensity statistics between datetimes (max 30 days).
+
+        Args:
+            from_dt: Start datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+            to_dt: End datetime in ISO 8601 format e.g. 2025-09-26T14:30Z
+        """
         from_str = self._format_datetime(from_dt)
         to_str = self._format_datetime(to_dt)
         response = self._client.get(f"/intensity/stats/{from_str}/{to_str}")
@@ -322,7 +387,12 @@ class CarbonIntensityClient:
     async def aget_intensity_statistics(
         self, from_dt: Union[datetime, str], to_dt: Union[datetime, str]
     ) -> List[StatisticsData]:
-        """Get carbon intensity statistics between datetimes (async)."""
+        """Get carbon intensity statistics between datetimes (async).
+
+        Args:
+            from_dt: Start datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+            to_dt: End datetime in ISO 8601 format e.g. 2025-09-26T14:30Z
+        """
         from_str = self._format_datetime(from_dt)
         to_str = self._format_datetime(to_dt)
         response = await self.async_client.get(f"/intensity/stats/{from_str}/{to_str}")
@@ -335,7 +405,13 @@ class CarbonIntensityClient:
         to_dt: Union[datetime, str],
         block_hours: int,
     ) -> List[StatisticsData]:
-        """Get block average carbon intensity statistics (block 1-24 hours)."""
+        """Get block average carbon intensity statistics (block 1-24 hours).
+
+        Args:
+            from_dt: Start datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+            to_dt: End datetime in ISO 8601 format e.g. 2025-09-26T14:30Z
+            block_hours: Block length in hours i.e. a block length of 2 hrs over a 24 hr period returns 12 items with the average, max, min for each 2 hr block e.g. 2017-08-26T17:00Z/2017-08-27T17:00Z/2
+        """
         if not 1 <= block_hours <= 24:
             raise ValueError("Block hours must be between 1 and 24")
 
@@ -353,7 +429,13 @@ class CarbonIntensityClient:
         to_dt: Union[datetime, str],
         block_hours: int,
     ) -> List[StatisticsData]:
-        """Get block average carbon intensity statistics (async)."""
+        """Get block average carbon intensity statistics (async).
+
+        Args:
+            from_dt: Start datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+            to_dt: End datetime in ISO 8601 format e.g. 2025-09-26T14:30Z
+            block_hours: Block length in hours i.e. a block length of 2 hrs over a 24 hr period returns 12 items with the average, max, min for each 2 hr block e.g. 2017-08-26T17:00Z/2017-08-27T17:00Z/2
+        """
         if not 1 <= block_hours <= 24:
             raise ValueError("Block hours must be between 1 and 24")
 
@@ -381,7 +463,11 @@ class CarbonIntensityClient:
     def get_generation_mix_past_24h(
         self, from_dt: Union[datetime, str]
     ) -> GenerationData:
-        """Get generation mix for past 24 hours from datetime."""
+        """Get generation mix for past 24 hours from datetime.
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+        """
         from_str = self._format_datetime(from_dt)
         response = self._client.get(f"/generation/{from_str}/pt24h")
         data = self._handle_response(response)
@@ -390,7 +476,11 @@ class CarbonIntensityClient:
     async def aget_generation_mix_past_24h(
         self, from_dt: Union[datetime, str]
     ) -> GenerationData:
-        """Get generation mix for past 24 hours from datetime (async)."""
+        """Get generation mix for past 24 hours from datetime (async).
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+        """
         from_str = self._format_datetime(from_dt)
         response = await self.async_client.get(f"/generation/{from_str}/pt24h")
         data = self._handle_response(response)
@@ -399,7 +489,12 @@ class CarbonIntensityClient:
     def get_generation_mix_between_datetimes(
         self, from_dt: Union[datetime, str], to_dt: Union[datetime, str]
     ) -> GenerationData:
-        """Get generation mix between two datetimes."""
+        """Get generation mix between two datetimes.
+
+        Args:
+            from_dt: Start datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+            to_dt: End datetime in ISO 8601 format e.g. 2025-09-26T14:30Z
+        """
         from_str = self._format_datetime(from_dt)
         to_str = self._format_datetime(to_dt)
         response = self._client.get(f"/generation/{from_str}/{to_str}")
@@ -409,7 +504,12 @@ class CarbonIntensityClient:
     async def aget_generation_mix_between_datetimes(
         self, from_dt: Union[datetime, str], to_dt: Union[datetime, str]
     ) -> GenerationData:
-        """Get generation mix between two datetimes (async)."""
+        """Get generation mix between two datetimes (async).
+
+        Args:
+            from_dt: Start datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+            to_dt: End datetime in ISO 8601 format e.g. 2025-09-26T14:30Z
+        """
         from_str = self._format_datetime(from_dt)
         to_str = self._format_datetime(to_dt)
         response = await self.async_client.get(f"/generation/{from_str}/{to_str}")
@@ -466,19 +566,31 @@ class CarbonIntensityClient:
         return RegionalFromToResponse.model_validate(data).data
 
     def get_intensity_by_postcode(self, postcode: str) -> List[RegionalId]:
-        """Get carbon intensity data for specific postcode."""
+        """Get carbon intensity data for specific postcode.
+
+        Args:
+            postcode: Outward postcode i.e. RG41 or SW1 or TF8. Do not include full postcode, outward postcode only.
+        """
         response = self._client.get(f"/regional/postcode/{postcode}")
         data = self._handle_response(response)
         return RegionalIdResponse.model_validate(data).data
 
     async def aget_intensity_by_postcode(self, postcode: str) -> List[RegionalId]:
-        """Get carbon intensity data for specific postcode (async)."""
+        """Get carbon intensity data for specific postcode (async).
+
+        Args:
+            postcode: Outward postcode i.e. RG41 or SW1 or TF8. Do not include full postcode, outward postcode only.
+        """
         response = await self.async_client.get(f"/regional/postcode/{postcode}")
         data = self._handle_response(response)
         return RegionalIdResponse.model_validate(data).data
 
     def get_intensity_by_region_id(self, region_id: int) -> List[RegionalId]:
-        """Get carbon intensity data for specific region ID (1-18)."""
+        """Get carbon intensity data for specific region ID (1-18).
+
+        Args:
+            region_id: Region ID of GB region.
+        """
         if not 1 <= region_id <= 18:
             raise ValueError(_REGION_ID_ERROR)
 
@@ -487,7 +599,11 @@ class CarbonIntensityClient:
         return RegionalIdResponse.model_validate(data).data
 
     async def aget_intensity_by_region_id(self, region_id: int) -> List[RegionalId]:
-        """Get carbon intensity data for specific region ID (async)."""
+        """Get carbon intensity data for specific region ID (async).
+
+        Args:
+            region_id: Region ID of GB region.
+        """
         if not 1 <= region_id <= 18:
             raise ValueError(_REGION_ID_ERROR)
 
@@ -499,7 +615,11 @@ class CarbonIntensityClient:
     def get_regional_intensity_forward_24h(
         self, from_dt: Union[datetime, str]
     ) -> List[RegionalFromTo]:
-        """Get regional carbon intensity data 24 hours forward."""
+        """Get regional carbon intensity data 24 hours forward.
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+        """
         from_str = self._format_datetime(from_dt)
         response = self._client.get(f"/regional/intensity/{from_str}/fw24h")
         data = self._handle_response(response)
@@ -508,7 +628,11 @@ class CarbonIntensityClient:
     async def aget_regional_intensity_forward_24h(
         self, from_dt: Union[datetime, str]
     ) -> List[RegionalFromTo]:
-        """Get regional carbon intensity data 24 hours forward (async)."""
+        """Get regional carbon intensity data 24 hours forward (async).
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+        """
         from_str = self._format_datetime(from_dt)
         response = await self.async_client.get(f"/regional/intensity/{from_str}/fw24h")
         data = self._handle_response(response)
@@ -517,7 +641,12 @@ class CarbonIntensityClient:
     def get_regional_intensity_forward_24h_postcode(
         self, from_dt: Union[datetime, str], postcode: str
     ) -> List[RegionalId]:
-        """Get regional carbon intensity data 24 hours forward for postcode."""
+        """Get regional carbon intensity data 24 hours forward for postcode.
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+            postcode: Outward postcode i.e. RG41 or SW1 or TF8. Do not include full postcode, outward postcode only.
+        """
         from_str = self._format_datetime(from_dt)
         response = self._client.get(
             f"/regional/intensity/{from_str}/fw24h/postcode/{postcode}"
@@ -528,7 +657,12 @@ class CarbonIntensityClient:
     async def aget_regional_intensity_forward_24h_postcode(
         self, from_dt: Union[datetime, str], postcode: str
     ) -> List[RegionalId]:
-        """Get regional carbon intensity data 24 hours forward for postcode (async)."""
+        """Get regional carbon intensity data 24 hours forward for postcode (async).
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+            postcode: Outward postcode i.e. RG41 or SW1 or TF8. Do not include full postcode, outward postcode only.
+        """
         from_str = self._format_datetime(from_dt)
         response = await self.async_client.get(
             f"/regional/intensity/{from_str}/fw24h/postcode/{postcode}"
@@ -539,7 +673,12 @@ class CarbonIntensityClient:
     def get_regional_intensity_forward_24h_region(
         self, from_dt: Union[datetime, str], region_id: int
     ) -> List[RegionalId]:
-        """Get regional carbon intensity data 24 hours forward for region."""
+        """Get regional carbon intensity data 24 hours forward for region.
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+            region_id: Region ID of GB region.
+        """
         if not 1 <= region_id <= 18:
             raise ValueError(_REGION_ID_ERROR)
 
@@ -553,7 +692,12 @@ class CarbonIntensityClient:
     async def aget_regional_intensity_forward_24h_region(
         self, from_dt: Union[datetime, str], region_id: int
     ) -> List[RegionalId]:
-        """Get regional carbon intensity data 24 hours forward for region (async)."""
+        """Get regional carbon intensity data 24 hours forward for region (async).
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+            region_id: Region ID of GB region.
+        """
         if not 1 <= region_id <= 18:
             raise ValueError(_REGION_ID_ERROR)
 
@@ -567,7 +711,11 @@ class CarbonIntensityClient:
     def get_regional_intensity_forward_48h(
         self, from_dt: Union[datetime, str]
     ) -> List[RegionalFromTo]:
-        """Get regional carbon intensity data 48 hours forward."""
+        """Get regional carbon intensity data 48 hours forward.
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+        """
         from_str = self._format_datetime(from_dt)
         response = self._client.get(f"/regional/intensity/{from_str}/fw48h")
         data = self._handle_response(response)
@@ -576,7 +724,11 @@ class CarbonIntensityClient:
     async def aget_regional_intensity_forward_48h(
         self, from_dt: Union[datetime, str]
     ) -> List[RegionalFromTo]:
-        """Get regional carbon intensity data 48 hours forward (async)."""
+        """Get regional carbon intensity data 48 hours forward (async).
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+        """
         from_str = self._format_datetime(from_dt)
         response = await self.async_client.get(f"/regional/intensity/{from_str}/fw48h")
         data = self._handle_response(response)
@@ -585,7 +737,12 @@ class CarbonIntensityClient:
     def get_regional_intensity_forward_48h_postcode(
         self, from_dt: Union[datetime, str], postcode: str
     ) -> List[RegionalId]:
-        """Get regional carbon intensity data 48 hours forward for postcode."""
+        """Get regional carbon intensity data 48 hours forward for postcode.
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+            postcode: Outward postcode i.e. RG41 or SW1 or TF8. Do not include full postcode, outward postcode only.
+        """
         from_str = self._format_datetime(from_dt)
         response = self._client.get(
             f"/regional/intensity/{from_str}/fw48h/postcode/{postcode}"
@@ -596,7 +753,12 @@ class CarbonIntensityClient:
     async def aget_regional_intensity_forward_48h_postcode(
         self, from_dt: Union[datetime, str], postcode: str
     ) -> List[RegionalId]:
-        """Get regional carbon intensity data 48 hours forward for postcode (async)."""
+        """Get regional carbon intensity data 48 hours forward for postcode (async).
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+            postcode: Outward postcode i.e. RG41 or SW1 or TF8. Do not include full postcode, outward postcode only.
+        """
         from_str = self._format_datetime(from_dt)
         response = await self.async_client.get(
             f"/regional/intensity/{from_str}/fw48h/postcode/{postcode}"
@@ -607,7 +769,12 @@ class CarbonIntensityClient:
     def get_regional_intensity_forward_48h_region(
         self, from_dt: Union[datetime, str], region_id: int
     ) -> List[RegionalId]:
-        """Get regional carbon intensity data 48 hours forward for region."""
+        """Get regional carbon intensity data 48 hours forward for region.
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+            region_id: Region ID of GB region.
+        """
         if not 1 <= region_id <= 18:
             raise ValueError(_REGION_ID_ERROR)
 
@@ -621,7 +788,12 @@ class CarbonIntensityClient:
     async def aget_regional_intensity_forward_48h_region(
         self, from_dt: Union[datetime, str], region_id: int
     ) -> List[RegionalId]:
-        """Get regional carbon intensity data 48 hours forward for region (async)."""
+        """Get regional carbon intensity data 48 hours forward for region (async).
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+            region_id: Region ID of GB region.
+        """
         if not 1 <= region_id <= 18:
             raise ValueError(_REGION_ID_ERROR)
 
@@ -635,7 +807,11 @@ class CarbonIntensityClient:
     def get_regional_intensity_past_24h(
         self, from_dt: Union[datetime, str]
     ) -> List[RegionalFromTo]:
-        """Get regional carbon intensity data 24 hours in the past."""
+        """Get regional carbon intensity data 24 hours in the past.
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+        """
         from_str = self._format_datetime(from_dt)
         response = self._client.get(f"/regional/intensity/{from_str}/pt24h")
         data = self._handle_response(response)
@@ -644,7 +820,11 @@ class CarbonIntensityClient:
     async def aget_regional_intensity_past_24h(
         self, from_dt: Union[datetime, str]
     ) -> List[RegionalFromTo]:
-        """Get regional carbon intensity data 24 hours in the past (async)."""
+        """Get regional carbon intensity data 24 hours in the past (async).
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+        """
         from_str = self._format_datetime(from_dt)
         response = await self.async_client.get(f"/regional/intensity/{from_str}/pt24h")
         data = self._handle_response(response)
@@ -653,7 +833,12 @@ class CarbonIntensityClient:
     def get_regional_intensity_past_24h_postcode(
         self, from_dt: Union[datetime, str], postcode: str
     ) -> List[RegionalId]:
-        """Get regional carbon intensity data 24 hours in the past for postcode."""
+        """Get regional carbon intensity data 24 hours in the past for postcode.
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+            postcode: Outward postcode i.e. RG41 or SW1 or TF8. Do not include full postcode, outward postcode only.
+        """
         from_str = self._format_datetime(from_dt)
         response = self._client.get(
             f"/regional/intensity/{from_str}/pt24h/postcode/{postcode}"
@@ -666,6 +851,10 @@ class CarbonIntensityClient:
     ) -> List[RegionalId]:
         """Get regional carbon intensity data
         24 hours in the past for postcode (async).
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+            postcode: Outward postcode i.e. RG41 or SW1 or TF8. Do not include full postcode, outward postcode only.
         """
         from_str = self._format_datetime(from_dt)
         response = await self.async_client.get(
@@ -677,7 +866,12 @@ class CarbonIntensityClient:
     def get_regional_intensity_past_24h_region(
         self, from_dt: Union[datetime, str], region_id: int
     ) -> List[RegionalId]:
-        """Get regional carbon intensity data 24 hours in the past for region."""
+        """Get regional carbon intensity data 24 hours in the past for region.
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+            region_id: Region ID of GB region.
+        """
         if not 1 <= region_id <= 18:
             raise ValueError(_REGION_ID_ERROR)
 
@@ -692,7 +886,12 @@ class CarbonIntensityClient:
         self, from_dt: Union[datetime, str], region_id: int
     ) -> List[RegionalId]:
         """Get regional carbon intensity data
-        24 hours in the past for region (async)."""
+        24 hours in the past for region (async).
+
+        Args:
+            from_dt: Datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+            region_id: Region ID of GB region.
+        """
 
         if not 1 <= region_id <= 18:
             raise ValueError(_REGION_ID_ERROR)
@@ -707,7 +906,12 @@ class CarbonIntensityClient:
     def get_regional_intensity_between_datetimes(
         self, from_dt: Union[datetime, str], to_dt: Union[datetime, str]
     ) -> List[RegionalFromTo]:
-        """Get regional carbon intensity data between datetimes."""
+        """Get regional carbon intensity data between datetimes.
+
+        Args:
+            from_dt: Start datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+            to_dt: End datetime in ISO 8601 format e.g. 2025-09-26T14:30Z
+        """
         from_str = self._format_datetime(from_dt)
         to_str = self._format_datetime(to_dt)
         response = self._client.get(f"/regional/intensity/{from_str}/{to_str}")
@@ -717,7 +921,12 @@ class CarbonIntensityClient:
     async def aget_regional_intensity_between_datetimes(
         self, from_dt: Union[datetime, str], to_dt: Union[datetime, str]
     ) -> List[RegionalFromTo]:
-        """Get regional carbon intensity data between datetimes (async)."""
+        """Get regional carbon intensity data between datetimes (async).
+
+        Args:
+            from_dt: Start datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+            to_dt: End datetime in ISO 8601 format e.g. 2025-09-26T14:30Z
+        """
         from_str = self._format_datetime(from_dt)
         to_str = self._format_datetime(to_dt)
         response = await self.async_client.get(
@@ -729,7 +938,13 @@ class CarbonIntensityClient:
     def get_regional_intensity_between_datetimes_postcode(
         self, from_dt: Union[datetime, str], to_dt: Union[datetime, str], postcode: str
     ) -> List[RegionalId]:
-        """Get regional carbon intensity data between datetimes for postcode."""
+        """Get regional carbon intensity data between datetimes for postcode.
+
+        Args:
+            from_dt: Start datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+            to_dt: End datetime in ISO 8601 format e.g. 2025-09-26T14:30Z
+            postcode: Outward postcode i.e. RG41 or SW1 or TF8. Do not include full postcode, outward postcode only.
+        """
         from_str = self._format_datetime(from_dt)
         to_str = self._format_datetime(to_dt)
         response = self._client.get(
@@ -741,7 +956,13 @@ class CarbonIntensityClient:
     async def aget_regional_intensity_between_datetimes_postcode(
         self, from_dt: Union[datetime, str], to_dt: Union[datetime, str], postcode: str
     ) -> List[RegionalId]:
-        """Get regional carbon intensity data between datetimes for postcode (async)."""
+        """Get regional carbon intensity data between datetimes for postcode (async).
+
+        Args:
+            from_dt: Start datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+            to_dt: End datetime in ISO 8601 format e.g. 2025-09-26T14:30Z
+            postcode: Outward postcode i.e. RG41 or SW1 or TF8. Do not include full postcode, outward postcode only.
+        """
         from_str = self._format_datetime(from_dt)
         to_str = self._format_datetime(to_dt)
         response = await self.async_client.get(
@@ -753,7 +974,13 @@ class CarbonIntensityClient:
     def get_regional_intensity_between_datetimes_region(
         self, from_dt: Union[datetime, str], to_dt: Union[datetime, str], region_id: int
     ) -> List[RegionalId]:
-        """Get regional carbon intensity data between datetimes for region."""
+        """Get regional carbon intensity data between datetimes for region.
+
+        Args:
+            from_dt: Start datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+            to_dt: End datetime in ISO 8601 format e.g. 2025-09-26T14:30Z
+            region_id: Region ID of GB region.
+        """
         if not 1 <= region_id <= 18:
             raise ValueError(_REGION_ID_ERROR)
 
@@ -768,7 +995,13 @@ class CarbonIntensityClient:
     async def aget_regional_intensity_between_datetimes_region(
         self, from_dt: Union[datetime, str], to_dt: Union[datetime, str], region_id: int
     ) -> List[RegionalId]:
-        """Get regional carbon intensity data between datetimes for region (async)."""
+        """Get regional carbon intensity data between datetimes for region (async).
+
+        Args:
+            from_dt: Start datetime in ISO 8601 format e.g. 2025-09-25T14:30Z
+            to_dt: End datetime in ISO 8601 format e.g. 2025-09-26T14:30Z
+            region_id: Region ID of GB region.
+        """
         if not 1 <= region_id <= 18:
             raise ValueError(_REGION_ID_ERROR)
 

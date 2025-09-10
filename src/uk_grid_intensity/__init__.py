@@ -4,6 +4,8 @@ A Python client for accessing the UK National Grid Carbon Intensity API.
 Provides comprehensive access to carbon intensity data, generation mix information,
 regional data, and statistics with full type safety using Pydantic models.
 
+**👉 All times provided in UTC (+00:00).**
+
 **Basic API usage example**
 
 ```python

@@ -2,11 +2,13 @@
 
 A comprehensive Python client for the [UK National Grid Carbon Intensity API](https://carbonintensity.org.uk/). This package provides easy access to carbon intensity data, generation mix information, regional data, and statistics with full type safety using Pydantic models.
 
+**All times provided in UTC (+00:00).**
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## 📚 Documentation
+## Documentation
 
-**[📖 Full API Documentation in `/docs`](https://cdinu.github.io/uk-grid-intensity-py/uk_grid_intensity.html)**
+**[Full API Documentation](https://cdinu.github.io/uk-grid-intensity-py/uk_grid_intensity.html)**
 
 Complete API reference with detailed examples, method signatures, and usage patterns.
 
