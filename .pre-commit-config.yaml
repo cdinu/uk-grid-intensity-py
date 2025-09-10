@@ -36,4 +36,3 @@ repos:
         files: '^src/uk_grid_intensity/.*\.py$'
         pass_filenames: false
         always_run: false
-        stages: [manual]
