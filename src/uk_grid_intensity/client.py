@@ -4,10 +4,8 @@ A comprehensive client for the UK National Grid Carbon Intensity API.
 Provides methods to access all API endpoints with proper type safety.
 """
 
-import asyncio
 from datetime import date, datetime
 from typing import List, Optional, Union
-from urllib.parse import urljoin
 
 import httpx
 
@@ -22,7 +20,6 @@ from .schemas import (
     RegionalFromToResponse,
     RegionalId,
     RegionalIdResponse,
-    RegionalResponse,
     StatisticsData,
     StatisticsResponse,
 )
@@ -667,7 +664,9 @@ class CarbonIntensityClient:
     async def aget_regional_intensity_past_24h_postcode(
         self, from_dt: Union[datetime, str], postcode: str
     ) -> List[RegionalId]:
-        """Get regional carbon intensity data 24 hours in the past for postcode (async)."""
+        """Get regional carbon intensity data
+        24 hours in the past for postcode (async).
+        """
         from_str = self._format_datetime(from_dt)
         response = await self.async_client.get(
             f"/regional/intensity/{from_str}/pt24h/postcode/{postcode}"
@@ -692,7 +691,9 @@ class CarbonIntensityClient:
     async def aget_regional_intensity_past_24h_region(
         self, from_dt: Union[datetime, str], region_id: int
     ) -> List[RegionalId]:
-        """Get regional carbon intensity data 24 hours in the past for region (async)."""
+        """Get regional carbon intensity data
+        24 hours in the past for region (async)."""
+
         if not 1 <= region_id <= 18:
             raise ValueError(_REGION_ID_ERROR)
 

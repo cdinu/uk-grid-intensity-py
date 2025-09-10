@@ -1,7 +1,7 @@
 """Examples of using the UK Grid Carbon Intensity API client."""
 
 import asyncio
-from datetime import datetime, date, timedelta
+from datetime import date, datetime, timedelta
 
 from uk_grid_intensity import CarbonIntensityClient
 from uk_grid_intensity.constants import REGION_NAMES
@@ -43,7 +43,8 @@ async def basic_examples():
             for data_point in region.data:
                 print(f"    {data_point.from_} to {data_point.to}")
                 print(
-                    f"    Intensity: {data_point.intensity.forecast} gCO2/kWh ({data_point.intensity.index})"
+                    f"    Intensity: {data_point.intensity.forecast} gCO2/kWh "
+                    f"({data_point.intensity.index})"
                 )
 
 
@@ -86,7 +87,8 @@ async def advanced_examples():
             cleanest = min(forecast, key=lambda x: x.intensity.forecast or float("inf"))
             print(f"  Cleanest period: {cleanest.from_} to {cleanest.to}")
             print(
-                f"  Intensity: {cleanest.intensity.forecast} gCO2/kWh ({cleanest.intensity.index})"
+                f"  Intensity: {cleanest.intensity.forecast} gCO2/kWh"
+                f" ({cleanest.intensity.index})"
             )
 
         # Get data for a specific postcode
@@ -106,7 +108,6 @@ def synchronous_examples():
 
     # Using context manager
     with CarbonIntensityClient() as client:
-
         # Get current intensity
         print("\n1. Current Intensity (Sync):")
         current = client.get_current_intensity()
@@ -178,7 +179,6 @@ def data_analysis_example():
     print("\n=== Data Analysis Example ===")
 
     with CarbonIntensityClient() as client:
-
         # Get today's data
         today_data = client.get_intensity_today()
 
@@ -206,11 +206,13 @@ def data_analysis_example():
                 dirtiest = max(today_data, key=lambda x: x.intensity.forecast or 0)
 
                 print(
-                    f"\n  Cleanest period: {cleanest.from_.strftime('%H:%M')} - {cleanest.to.strftime('%H:%M')}"
+                    f"\n  Cleanest period: {cleanest.from_.strftime('%H:%M')}"
+                    f" - {cleanest.to.strftime('%H:%M')}"
                 )
                 print(f"    Intensity: {cleanest.intensity.forecast} gCO2/kWh")
                 print(
-                    f"  Dirtiest period: {dirtiest.from_.strftime('%H:%M')} - {dirtiest.to.strftime('%H:%M')}"
+                    f"  Dirtiest period: {dirtiest.from_.strftime('%H:%M')}"
+                    f" - {dirtiest.to.strftime('%H:%M')}"
                 )
                 print(f"    Intensity: {dirtiest.intensity.forecast} gCO2/kWh")
 

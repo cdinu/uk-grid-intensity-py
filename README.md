@@ -4,6 +4,12 @@ A comprehensive Python client for the [UK National Grid Carbon Intensity API](ht
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+## 📚 Documentation
+
+**[📖 Full API Documentation in `/docs`](blob/main/index.html)**
+
+Complete API reference with detailed examples, method signatures, and usage patterns.
+
 ## Installation
 
 ### Using pip
@@ -155,7 +161,7 @@ from uk_grid_intensity.constants import REGION_NAMES
 with CarbonIntensityClient() as client:
     # Get data for all regions
     regional_data = client.get_current_regional_intensity()
-    
+
     for time_data in regional_data:
         for region in time_data.regions:
             region_name = REGION_NAMES.get(region.regionid, f"Region {region.regionid}")
@@ -189,7 +195,7 @@ from uk_grid_intensity import CarbonIntensityClient
 
 with CarbonIntensityClient() as client:
     today_data = client.get_intensity_today()
-    
+
     if today_data:
         cleanest = min(today_data, key=lambda x: x.intensity.forecast or float('inf'))
         print(f"Cleanest period: {cleanest.from_.strftime('%H:%M')} - {cleanest.to.strftime('%H:%M')}")
@@ -205,7 +211,7 @@ from uk_grid_intensity import CarbonIntensityClient
 with CarbonIntensityClient() as client:
     end_date = datetime.now()
     start_date = end_date - timedelta(days=7)
-    
+
     stats = client.get_intensity_statistics(start_date, end_date)
     for data in stats:
         print(f"Average: {data.intensity.average} gCO2/kWh")
@@ -222,10 +228,10 @@ with CarbonIntensityClient() as client:
     # London (region 13) vs Scotland (region 1)
     london = client.get_intensity_by_region_id(13)
     scotland = client.get_intensity_by_region_id(1)
-    
+
     london_intensity = london[0].data[0].intensity.forecast
     scotland_intensity = scotland[0].data[0].intensity.forecast
-    
+
     print(f"London: {london_intensity} gCO2/kWh")
     print(f"Scotland: {scotland_intensity} gCO2/kWh")
 ```
@@ -252,9 +258,20 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Pydantic](https://pydantic.dev/)
 - [HTTPX](https://www.python-httpx.org/)
 
-## API Reference
+## 📚 Documentation & API Reference
 
-For detailed API documentation, visit the [UK Carbon Intensity API documentation](https://carbon-intensity.github.io/api-definitions/).
+For comprehensive documentation including detailed API reference, examples, and advanced usage patterns:
+
+**[📖 Visit the Full Documentation](https://cdinu.github.io/uk-grid-intensity-py/)**
+
+The documentation includes:
+- Complete API reference with all methods and parameters
+- Detailed usage examples and patterns
+- Schema documentation for all data models
+- Error handling guidelines
+- Advanced configuration options
+
+For the official UK Carbon Intensity API specification, visit the [UK Carbon Intensity API documentation](https://carbon-intensity.github.io/api-definitions/).
 
 ## Supported Regions
 

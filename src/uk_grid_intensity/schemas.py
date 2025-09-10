@@ -8,7 +8,7 @@ from datetime import datetime
 from enum import Enum
 from typing import List, Optional, Union
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+from pydantic import BaseModel, Field
 
 
 class IntensityIndex(str, Enum):
@@ -185,7 +185,9 @@ class StatisticsResponse(BaseModel):
 
 
 class RegionalFromToResponse(BaseModel):
-    """Response model for regional endpoints, list based on regions, national or country level."""
+    """Response model for regional endpoints,
+    list based on regions, national or country level.
+    """
 
     data: List[RegionalFromTo] = Field(
         ..., description="Regional data list with a list of regional data"

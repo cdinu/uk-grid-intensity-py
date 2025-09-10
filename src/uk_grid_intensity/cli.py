@@ -2,11 +2,9 @@
 
 import argparse
 import sys
-from datetime import datetime
-from typing import Optional
 
-from .client import CarbonIntensityClient, CarbonIntensityAPIError
 from ._version import __version__
+from .client import CarbonIntensityAPIError, CarbonIntensityClient
 
 
 def format_intensity_data(data_list):
