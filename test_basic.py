@@ -1,12 +1,8 @@
 """Simple test to verify the package works."""
 
 import sys
-import os
 
-# Add the src directory to Python path for testing
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "src"))
-
-from uk_grid_intensity import CarbonIntensityClient, CarbonIntensityAPIError
+from uk_grid_intensity import CarbonIntensityAPIError, CarbonIntensityClient
 
 
 def test_import():
