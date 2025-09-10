@@ -6,7 +6,7 @@ A comprehensive Python client for the [UK National Grid Carbon Intensity API](ht
 
 ## 📚 Documentation
 
-**[📖 Full API Documentation in `/docs`](blob/main/index.html)**
+**[📖 Full API Documentation in `/docs`](https://cdinu.github.io/uk-grid-intensity-py/uk_grid_intensity.html)**
 
 Complete API reference with detailed examples, method signatures, and usage patterns.
 
